@@ -1,0 +1,20 @@
+service: IMAGE_REKOGNITION
+
+provider: 
+  name: aws
+  runtime: nodejs8.10
+  stage: test
+  environment:
+    ACCESS_KEY_ID: TU_ACCESS_KEY_ID_DE_IAM
+    SECRET_ACCESS_KEY: TU_SECRET_ACCESS_KEY_DE_IAM
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+functions:
+  rekognition:
+    handler: api.default
+    events:
+      - http: ANY /
+      - http: 'ANY {proxi+}'
