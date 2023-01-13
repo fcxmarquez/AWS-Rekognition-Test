@@ -6,7 +6,7 @@ import request from "request";
 const app = express();
 const requests = request.defaults({ encoding: null });
 const rek = new AWS.Rekognition({
-  region: "us-east-1",
+  region: "us-west-2",
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
