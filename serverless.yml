@@ -22,4 +22,6 @@ functions:
 custom:
   serverless-offline:
     httpPort: 3001
-  
+  webpackIncludeModules:
+    forceInclude:
+      - request
