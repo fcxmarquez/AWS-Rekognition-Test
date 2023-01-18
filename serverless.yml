@@ -5,8 +5,8 @@ provider:
   runtime: nodejs16.x
   stage: test
   environment:
-    ACCESS_KEY_ID: ${file(./serverless.env.yml):ACCESS_KEY_ID}
-    SECRET_ACCESS_KEY: ${file(./serverless.env.yml):SECRET_ACCESS_KEY}
+    ACCESS_KEY_ID: ${file(./serverless.env.yml):prd.ACCESS_KEY_ID}
+    SECRET_ACCESS_KEY: ${file(./serverless.env.yml):prd.SECRET_ACCESS_KEY}
 
 plugins:
   - serverless-webpack
@@ -16,8 +16,10 @@ functions:
   rekognition:
     handler: src/api.default
     events:
-      - http: 'GET /labels'
+      - http: ANY /
+      - http: 'ANY {proxi+}'
 
 custom:
   serverless-offline:
     httpPort: 3001
+  
